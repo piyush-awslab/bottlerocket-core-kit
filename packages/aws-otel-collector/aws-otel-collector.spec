@@ -28,7 +28,7 @@ BuildRequires: %{_cross_os}glibc-devel
 %build
 
 %set_cross_go_flags
-go build -ldflags "${GOLDFLAGS}" -o aws-otel-collector ./cmd/awscollector
+go build -ldflags "${GOLDFLAGS} -X %{goimport}/tools/version.Version=v%{version}" -o aws-otel-collector ./cmd/awscollector
 
 %install
 install -D -p -m 0644 %{S:1} %{buildroot}%{_cross_unitdir}/aws-otel-collector.service
