@@ -24,6 +24,8 @@ Requires: %{name}
 
 %prep
 %autosetup -n procps-v%{version} -p1
+# The GitLab archive has no .tarball-version, so git-version-gen prints UNKNOWN.
+echo %{version} > .tarball-version
 
 %build
 ./autogen.sh
